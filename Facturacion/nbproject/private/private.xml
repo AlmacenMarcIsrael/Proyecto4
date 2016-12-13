@@ -3,13 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/DAW2/Java/Facturacion/src/vista/vistaCliente.java</file>
-            <file>file:/G:/DAW2/Java/Facturacion/src/modelo/Conexion.java</file>
-            <file>file:/G:/DAW2/Java/Facturacion/src/vista/VistaCompleta.java</file>
-            <file>file:/G:/DAW2/Java/Facturacion/src/modelo/Factura.java</file>
-            <file>file:/G:/DAW2/Java/Facturacion/src/vista/VistaProducto.java</file>
-            <file>file:/G:/DAW2/Java/Facturacion/src/modelo/Producto.java</file>
-            <file>file:/G:/DAW2/Java/Facturacion/src/controlador/ControllerFactura.java</file>
+            <file>file:/C:/Users/Israel/Documents/GitHub/Proyecto4/Facturacion/src/vista/VistaInicio.java</file>
         </group>
     </open-files>
 </project-private>

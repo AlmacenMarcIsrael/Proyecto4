@@ -116,7 +116,18 @@ CREATE TABLE IF NOT EXISTS `tbl_detall_com` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-
+-- -------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `tbl_usuari`
+--
+CREATE TABLE IF NOT EXISTS `tbl_usuari` (
+  `usuari_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login_usuari` varchar(20) NOT NULL,
+  `pass_usuari` varchar(15) NOT NULL,
+  `nom_usuari` varchar(20) NOT NULL,
+  `cognom_usuari` varchar(20) NOT NULL,
+  PRIMARY KEY (`usuari_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- -------------------------------------------------------
 -- RELACIONES PARA LAS TABLAS 
 -- ---------------------------------------------------

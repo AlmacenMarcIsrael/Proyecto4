@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author Usuario
  */
 public class Conexion {
-     public String db = "bd_facturacion";
+     public String db = "bd_estoc";
     // el puerto 3306 no es necesario ponerlo cuando es el por defecto 
     public String url = "jdbc:mysql://localhost:3306/"+db;
     public String user = "root";

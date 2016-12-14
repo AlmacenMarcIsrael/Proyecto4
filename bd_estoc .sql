@@ -122,11 +122,6 @@ CREATE TABLE IF NOT EXISTS `tbl_usuari` (
 -- RELACIONES PARA LAS TABLAS 
 -- ---------------------------------------------------
 
--- `tbl_serie` `tbl_categoria`:
-ALTER TABLE `tbl_serie` ADD CONSTRAINT `FK_serie_categoria` FOREIGN KEY (categoria_id)
-REFERENCES `tbl_categoria`(categoria_id);
--- ---------------------------------------------------
-
 -- `tbl_producte`  `tbl_serie`:
 ALTER TABLE `tbl_producte` ADD CONSTRAINT `FK_prod_serie` FOREIGN KEY (serie_id)
 REFERENCES `tbl_serie`(serie_id);

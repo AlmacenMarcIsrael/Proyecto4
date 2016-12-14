@@ -83,7 +83,6 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
 
-        pwd_login.setText("jPasswordField1");
         pwd_login.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pwd_loginFocusGained(evt);
@@ -247,7 +246,7 @@ public class VistaInicio extends javax.swing.JFrame {
         if (this.txt_username.getText().equals("Usuario")){
             this.msg_error.setText("Introduce un usuario");
             error_login = 1;
-        } else if(this.pwd_login.getText().equals("Contraseña")){
+        } else if(this.pwd_login.getText().equals("")){
             this.msg_error.setText("Introduce una contraseña");
             error_login = 1;
         }

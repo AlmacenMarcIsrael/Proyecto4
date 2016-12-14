@@ -243,9 +243,6 @@
             <Component class="javax.swing.JLabel" name="msg_error">
             </Component>
             <Component class="javax.swing.JPasswordField" name="pwd_login">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pwd_loginFocusGained"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pwd_loginActionPerformed"/>

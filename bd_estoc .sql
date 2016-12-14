@@ -69,23 +69,13 @@ CREATE TABLE IF NOT EXISTS `tbl_categoria` (
 
 -- --------------------------------------------------------
 --
--- Estructura de tabla para la tabla `tbl_serie`
---
-CREATE TABLE IF NOT EXISTS `tbl_serie` (
-  `serie_id` int(11) NOT NULL AUTO_INCREMENT,
-  `serie_nom` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `categoria_id` int(11) NULL,
-  PRIMARY KEY (`serie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
---
 -- Estructura de tabla para la tabla `tbl_producte`
 --
 CREATE TABLE IF NOT EXISTS `tbl_producte` (
   `prod_id` int(11) NOT NULL AUTO_INCREMENT,
   `prod_nom` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `prod_foto` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `prod_precio` decimal(6) NOT NULL,
   `serie_id` int(11) NULL,
   PRIMARY KEY (`prod_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -17,6 +17,7 @@ public class VistaInicio extends javax.swing.JFrame {
     public VistaInicio() {
         initComponents();
         this.setTitle("Apliacion Almacen");
+        this.pwd_login.setEchoChar((char)0);
         
         //this.setExtendedState(VistaInicio.MAXIMIZED_BOTH);
         
@@ -83,6 +84,7 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
 
+        pwd_login.setText("Contraseña");
         pwd_login.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pwd_loginFocusGained(evt);
@@ -237,6 +239,8 @@ public class VistaInicio extends javax.swing.JFrame {
         vistaproducto.setVisible(true);
         
         
+        
+        
 
     }//GEN-LAST:event_btn_productosActionPerformed
 
@@ -246,7 +250,7 @@ public class VistaInicio extends javax.swing.JFrame {
         if (this.txt_username.getText().equals("Usuario")){
             this.msg_error.setText("Introduce un usuario");
             error_login = 1;
-        } else if(this.pwd_login.getText().equals("")){
+        } else if(this.pwd_login.getPassword().equals("Contraseña")){
             this.msg_error.setText("Introduce una contraseña");
             error_login = 1;
         }

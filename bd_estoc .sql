@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `tbl_producte` (
   `prod_id` int(11) NOT NULL AUTO_INCREMENT,
   `prod_nom` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `prod_foto` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `prod_precio` decimal(6) NOT NULL,
+  `prod_precio` decimal(6,2) NOT NULL,
   `serie_id` int(11) NULL,
   PRIMARY KEY (`prod_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -157,4 +157,39 @@ ALTER TABLE `tbl_estoc` ADD CONSTRAINT `FK_estoc_lloc` FOREIGN KEY (lloc_id)
 REFERENCES `tbl_lloc`(lloc_id);
 -- ---------------------------------------------------
 
+
+INSERT INTO `tbl_categoria` (`categoria_id`, `categoria_nom`) VALUES
+(1, 'Dormitorio'),
+(2, 'Comedor'),
+(3, 'Salón'),
+(4, 'Cocina');
+
+INSERT INTO `tbl_comanda` (`comanda_id`, `comanda_quantitat`, `comanda_data`, `prov_id`) VALUES
+(1, 5, '2016-12-13', 1);
+
+INSERT INTO `tbl_detall_com` (`detall_com_id`, `comanda_id`, `prod_id`) VALUES
+(1, 1, 1);
+
+
+INSERT INTO `tbl_producte` (`prod_id`, `prod_nom`, `prod_preu`, `prod_foto`, `serie_id`) VALUES
+(1, 'Armario Blanco', 128, 'Armario_Pax_Blanco.JPG', 1),
+(2, 'Armario Negro', 196, 'Armario_Pax_Negro.jpg', 1),
+(3, 'Armario Rosa', 340, 'Armario_Pax_Rosa.jpg', 1),
+(4, 'Armario con 2 cajones', 349, 'Armario_2_cajones_STOCKHOLM.jpg', 2),
+(5, 'Mesa de centro', 199, 'Mesa_Centro_STOCKHOLM.jpg', 2),
+(6, 'Mueble TV', 349, 'Mueble_TV_STOCKHOLM.jpg', 2),
+(7, 'Mesa_extensible_blanco', 199, 'Mesa_extensible_blanco_BJURSTA', 3),
+(8, 'Mesa_extensible_marron', 199, 'Mesa_extensible_marron_BJURSTA', 3),
+(9, 'Aparador', 199, 'Aparador_BJURSTA', 3);
+
+INSERT INTO `tbl_proveidor` (`prov_id`, `prov_nom`, `prov_adre`, `prov_email`) VALUES
+(1, 'Joan23', 'Av. mare de deu 10 Bellvitge', 'muebles@fje.edu');
+
+INSERT INTO `tbl_serie` (`serie_id`, `serie_nom`, `categoria_id`) VALUES
+(1, 'PAX', 1),
+(2, 'STOCKHOLM', 3),
+(3, 'BJURSTA\n', 2);
+
+INSERT INTO `tbl_usuari` (`usuari_id`, `login_usuari`, `pass_usuari`, `nom_usuari`, `cognom_usuari`) VALUES
+(1, 'usuario1', '12345', 'usuario', 'apellido');
 

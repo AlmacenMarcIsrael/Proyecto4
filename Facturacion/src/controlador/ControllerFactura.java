@@ -28,6 +28,49 @@ public class ControllerFactura {
     public ControllerFactura() {
     }
 
+    public boolean login(String usuario, String pass){
+        
+        Conexion conecControl = new Conexion();
+        Connection cn = conecControl.conectar();
+        
+        //1. consulta SQL para mirar todos los usuarios
+        //2. comparar los datos obtenidos del sql con los datos que ha escrito el usuario
+   
+        //3. si hay conicidencias entonces es correcto
+        
+        String SQL = "SELECT * FROM tbl_usuari WHERE login_usuari = '"+ usuario +"' && pass_usuari = '"+ pass +"'";
+
+        Statement st = null;
+        int ok = 0;
+        try {
+            //System.out.println("conexion realizada");
+            st = cn.prepareCall(SQL);
+
+          
+            ResultSet rs = st.executeQuery(SQL);
+
+            if(rs.next()) {
+                //si entra aqui significa que hay coincidencias
+                JOptionPane.showMessageDialog(null, "Login Correcto");
+                ok = 1;
+            }
+           
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "no se ha realizado correctamente la consulta");
+            
+            //si falla sgnifica que no hay coincidencias
+            
+            ok = 0;
+        }
+         
+        if (ok == 1){
+            return true;
+        }else{
+            return false;
+        }
+       
+    }
+    
     public void rutinaCrearCliente(Cliente c) {
 
         Conexion conecControl = new Conexion();

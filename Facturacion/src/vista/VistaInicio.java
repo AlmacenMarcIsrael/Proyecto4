@@ -89,9 +89,6 @@ public class VistaInicio extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pwd_loginFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pwd_loginFocusLost(evt);
-            }
         });
         pwd_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,22 +288,9 @@ public class VistaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_pwd_loginActionPerformed
 
     private void pwd_loginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd_loginFocusGained
-
-        if (this.pwd_login.getText().equals("Contraseña")){
-                this.pwd_login.setText("");
-                this.pwd_login.setEchoChar('*');
-        }
-                
-    }//GEN-LAST:event_pwd_loginFocusGained
-
-    private void pwd_loginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwd_loginFocusLost
         // TODO add your handling code here:
-        if (this.pwd_login.getText().equals("")){
-        this.pwd_login.setEchoChar((char)0);
-        this.pwd_login.setText("Contraseña");
-        }
         
-    }//GEN-LAST:event_pwd_loginFocusLost
+    }//GEN-LAST:event_pwd_loginFocusGained
 
     /**
      * @param args the command line arguments

@@ -258,10 +258,43 @@ public class VistaInicio extends javax.swing.JFrame {
             error_login = 1;
         }
         
+        //llamar a la funcion de login
+    
+                // Obtener el password
+
+        char passArray[] = pwd_login.getPassword();
+
+        // Revisar que sean letras y numeros
+        String pass = "";
+        for (int i = 0; i < passArray.length; i++) {
+
+            char c = passArray[i];
+
+            // Si no es letra o numero entonces no es valido
+
+            pass = pass + c ;
+
+        }
+       
+        
+       String usuario = this.txt_username.getText();
+       
+        ControllerFactura inicio = new ControllerFactura();
+       boolean login = inicio.login(usuario, pass) ;
+        if(login){
+            error_login = 1;
+            
+        }else{
+            error_login =0;
+        }
+        
+        
         if (error_login == 0){
             this.msg_error.setText("Error de login");
+        }else{
+            this.jPanel1.setVisible(false);
         }
-        this.msg_error.setVisible(true);
+        //this.msg_error.setVisible(true);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

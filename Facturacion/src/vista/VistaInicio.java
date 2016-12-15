@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.ControllerFactura;
+
 /**
  *
  * @author 1001489.joan23
@@ -249,6 +251,7 @@ public class VistaInicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.msg_error.setText("");
         int error_login = 0;
         if (this.txt_username.getText().equals("Usuario")){
             this.msg_error.setText("Introduce un usuario");

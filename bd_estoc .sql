@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `tbl_producte` (
   `prod_nom` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `prod_foto` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `prod_precio` decimal(6,2) NOT NULL,
-  `serie_id` int(11) NULL,
+
   PRIMARY KEY (`prod_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

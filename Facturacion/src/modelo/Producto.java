@@ -10,60 +10,63 @@ package modelo;
  * @author Usuario
  */
 public class Producto {
-    private int pro_id;
-    private String pro_nom;
-    private double pro_precio;
-    private String pro_stock;
+    private int prod_id;
+    private String prod_nom;
+    private double prod_preu;
+    private int serie_id;
 
     public Producto() {
     }
 
-    public Producto(String pro_nom, double pro_precio, String pro_stock) {
-        this.pro_nom = pro_nom;
-        this.pro_precio = pro_precio;
-        this.pro_stock = pro_stock;
+    public Producto(int prod_id, String prod_nom, double prod_preu, int serie_id) {
+        this.prod_id = prod_id;
+        this.prod_nom = prod_nom;
+        this.prod_preu = prod_preu;
+        this.serie_id = serie_id;
     }
 
-    
-    
-    public Producto(int pro_id, String pro_nom, double pro_precio, String pro_stock) {
-        this.pro_id = pro_id;
-        this.pro_nom = pro_nom;
-        this.pro_precio = pro_precio;
-        this.pro_stock = pro_stock;
+    public Producto(int prod_id, String prod_nom, double prod_preu) {
+        this.prod_id = prod_id;
+        this.prod_nom = prod_nom;
+        this.prod_preu = prod_preu;
     }
 
-    public Producto(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Producto(String prod_nom, double prod_preu) {
+        this.prod_nom = prod_nom;
+        this.prod_preu = prod_preu;
     }
 
-    public int getPro_id() {
-        return pro_id;
+    public int getProd_id() {
+        return prod_id;
     }
 
-    public String getPro_nom() {
-        return pro_nom;
+    public String getProd_nom() {
+        return prod_nom;
     }
 
-    public double getPro_precio() {
-        return pro_precio;
+    public void setProd_id(int prod_id) {
+        this.prod_id = prod_id;
     }
 
-    public String getPro_stock() {
-        return pro_stock;
+    public void setProd_nom(String prod_nom) {
+        this.prod_nom = prod_nom;
     }
 
-    public void setPro_nom(String pro_nom) {
-        this.pro_nom = pro_nom;
+    public void setProd_preu(double prod_preu) {
+        this.prod_preu = prod_preu;
     }
 
-    public void setPro_precio(double pro_precio) {
-        this.pro_precio = pro_precio;
+    public void setSerie_id(int serie_id) {
+        this.serie_id = serie_id;
     }
 
-    public void setPro_stock(String pro_stock) {
-        this.pro_stock = pro_stock;
+    public double getProd_preu() {
+        return prod_preu;
     }
-    
+
+    public int getSerie_id() {
+        return serie_id;
+    }
+
     
 }

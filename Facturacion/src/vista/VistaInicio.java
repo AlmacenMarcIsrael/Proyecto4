@@ -22,7 +22,7 @@ public class VistaInicio extends javax.swing.JFrame {
         this.pwd_login.setEchoChar((char)0);
         
         //this.setExtendedState(VistaInicio.MAXIMIZED_BOTH);
-        
+        this.jMenu1.setVisible(false);
     }
 
     /**
@@ -283,7 +283,8 @@ public class VistaInicio extends javax.swing.JFrame {
        String usuario = this.txt_username.getText();
        
         ControllerFactura inicio = new ControllerFactura();
-       boolean login = inicio.login(usuario, pass) ;
+       boolean login = inicio.login(usuario, pass);
+       
         if(login){
             error_login = 1;
             
@@ -296,6 +297,15 @@ public class VistaInicio extends javax.swing.JFrame {
             this.msg_error.setText("Error de login");
         }else{
             this.jPanel1.setVisible(false);
+            
+            VistaProducto vistaproducto = new VistaProducto();
+        
+        this.Escritorio.add(vistaproducto);
+
+        vistaproducto.toFront();
+
+        vistaproducto.setVisible(true);
+        this.jMenu1.setVisible(true);
         }
         //this.msg_error.setVisible(true);
         

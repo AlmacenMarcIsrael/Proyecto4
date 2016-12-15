@@ -95,17 +95,17 @@ public class ControllerFactura {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();
 
-        String sql = "SELECT * FROM tbl_producto";
+        String sql = "SELECT * FROM tbl_producte";
 
         Statement st = null;
         //Creamos un veector string para almacenar los datos que obtenemos del select y lo meteremos en la tabla
-        String vector[] = new String[4];
-        String vectorCabecera[] = new String[4];
+        String vector[] = new String[3];
+        String vectorCabecera[] = new String[3];
 
-        vectorCabecera[0] = "pro_id";
-        vectorCabecera[1] = "pro_nom";
-        vectorCabecera[2] = "pro_precio";
-        vectorCabecera[3] = "pro_stock";
+        vectorCabecera[0] = "prod_id";
+        vectorCabecera[1] = "prod_nom";
+        vectorCabecera[2] = "prod_preu";
+       
 
         tabla =  new DefaultTableModel(null, vectorCabecera);
 
@@ -118,10 +118,10 @@ public class ControllerFactura {
 
             while (rs.next()) {
 
-                vector[0] = String.valueOf(rs.getInt("pro_id"));
-                vector[1] = rs.getString("pro_nom");
-                vector[2] = String.valueOf(rs.getDouble("pro_precio"));
-                vector[3] = String.valueOf(rs.getInt("pro_stock"));
+                vector[0] = String.valueOf(rs.getInt("prod_id"));
+                vector[1] = rs.getString("prod_nom");
+                vector[2] = String.valueOf(rs.getDouble("prod_preu"));
+               
 
                
                  tabla.addRow(vector);
@@ -138,7 +138,7 @@ public class ControllerFactura {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();
         //crear la consulta, los ? smulan  las variables
-        String sql1 = "INSERT INTO tbl_producto (pro_nom, pro_precio, pro_stock) VALUES (?,?,?)";
+        String sql1 = "INSERT INTO tbl_producto (prod_nom, prod_preu) VALUES (?,?)";
         String sql2 = "INSER INTO tbl_cliente (cli_NIF, cli_nom) VALUES (?,?)";
         //pasar parametros a la consulta
         PreparedStatement pst1 = null;
@@ -150,9 +150,9 @@ public class ControllerFactura {
             //se podran instertar cosas
             pst1 = cn.prepareStatement(sql1);
             //montar tabla para insertar en la BBDD
-            pst1.setString(1, p.getPro_nom());
-            pst1.setDouble(2, p.getPro_precio());
-            pst1.setString(3, p.getPro_stock());
+            pst1.setString(1, p.getProd_nom());
+            pst1.setDouble(2, p.getProd_preu());
+           
 
             pst2 = cn.prepareStatement(sql2);
             //montar tabla para insertar en la BBDD
@@ -180,16 +180,16 @@ public class ControllerFactura {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();
         //crear la consulta, los ? smulan  las variables
-        String sql = "INSERT INTO tbl_producto (pro_nom, pro_precio, pro_stock) VALUES (?,?,?)";
+        String sql = "INSERT INTO tbl_producto (pro_nom, pro_precio) VALUES (?,?)";
         //pasar parametros a la consulta
         PreparedStatement pst = null;
         try {
             //se podran instertar cosas
             pst = cn.prepareStatement(sql);
             //montar tabla para insertar en la BBDD
-            pst.setString(1, p.getPro_nom());
-            pst.setDouble(2, p.getPro_precio());
-            pst.setString(3, p.getPro_stock());
+            pst.setString(1, p.getProd_nom());
+            pst.setDouble(2, p.getProd_preu());
+           
             //ejecutar la consulta del pst prepared statement
             //el executeUpdate devuelve un int, si funciona devuelve 1, si no, 0
             int n = pst.executeUpdate();

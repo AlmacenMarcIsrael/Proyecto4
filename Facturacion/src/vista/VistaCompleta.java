@@ -6,7 +6,7 @@
 package vista;
 
 import controlador.ControllerFactura;
-import modelo.Cliente;
+
 import modelo.Conexion;
 import modelo.Producto;
 
@@ -259,7 +259,7 @@ public class VistaCompleta extends javax.swing.JFrame {
 
         
         
-        Cliente c = new Cliente(this.tnif.getText(),this.tnombre.getText());
+      
 
         //factura.anadirProductoCliente(p, c);
     }//GEN-LAST:event_btn_anadirtodoActionPerformed

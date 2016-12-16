@@ -13,9 +13,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Cliente;
+import modelo.Categoria;
+
 import modelo.Conexion;
 import modelo.Producto;
 
@@ -28,6 +31,37 @@ public class ControllerFactura {
     public ControllerFactura() {
     }
 
+    
+    public void llenarCombo(JComboBox box){
+        DefaultComboBoxModel value;
+        Conexion conecControl = new Conexion();
+        Connection cn = conecControl.conectar();
+
+        String sql = "Select * From tbl_categoria";
+        
+        Statement st = null;
+        ResultSet rs=null;
+
+        try {
+            st = cn.createStatement();
+             
+            rs = st.executeQuery(sql);
+            
+            //creamos un nuevo modelo de combo box
+            value=new DefaultComboBoxModel();
+            // a la caja que nos pasan como parametro le ponemos el modelo que hemos creado
+            box.setModel(value);
+            while (rs.next()) {
+            //y a continuacion le añadimos los elemenos que encontramos de la consulta, al combo box 
+             value.addElement(new Categoria(rs.getInt("categoria_id"),rs.getString("categoria_nom")));
+            
+            }
+            cn.close();
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error Conexion");
+          
+        }
+}
     public boolean login(String usuario, String pass){
         
         Conexion conecControl = new Conexion();
@@ -71,22 +105,7 @@ public class ControllerFactura {
        
     }
     
-    public void rutinaCrearCliente(Cliente c) {
-
-        Conexion conecControl = new Conexion();
-        Connection cn = conecControl.conectar();
-        //llamar a una rutina creada en la base de datos
-        try {
-            CallableStatement llamar = cn.prepareCall("{call spcrearCliente(?,?)}");
-
-            llamar.setString(1, "david");
-            llamar.setString(2, "656565415");
-
-        } catch (SQLException ex) {
-
-        }
-
-    }
+    
 
      public DefaultTableModel mostrarProducto() {
 
@@ -142,7 +161,7 @@ public class ControllerFactura {
         return tabla;
     }
      
-    public void anadirProductoCliente(Producto p, Cliente c) {
+    /*public void anadirProductoCliente(Producto p, Cliente c) {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();
         //crear la consulta, los ? smulan  las variables
@@ -182,7 +201,7 @@ public class ControllerFactura {
             }
         }
 
-    }
+    }*/
 
     public void anadirProducto(Producto p) {
         Conexion conecControl = new Conexion();
@@ -219,37 +238,6 @@ public class ControllerFactura {
 
     }
 
-    public void nuevoCliente(Cliente c) {
-        Conexion conecControl = new Conexion();
-        Connection cn = conecControl.conectar();
-        //crear la consulta, los ? smulan  las variables
-        String sql = "INSERT INTO tbl_cliente (cli_NIF, cli_nom) VALUES (?,?)";
-        //pasar parametros a la consulta
-        PreparedStatement pst = null;
-        try {
-            //se podran instertar cosas
-            pst = cn.prepareStatement(sql);
-            //montar tabla para insertar en la BBDD
-            pst.setString(1, c.getCli_NIF());
-            pst.setString(2, c.getCli_nom());
-            //ejecutar la consulta del pst prepared statement
-            //el executeUpdate devuelve un int, si funciona devuelve 1, si no, 0
-            int n = pst.executeUpdate();
-            if (n != 0) {
-                JOptionPane.showMessageDialog(null, "Enhorabuena! se ha insertado un nuevo registro.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se ha podido insertar el registro.");
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "UPPS! no se ha podido conectar a la base de datos");
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
-            }
-        }
-    }
+    
 
 }

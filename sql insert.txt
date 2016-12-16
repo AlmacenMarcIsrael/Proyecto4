@@ -1,0 +1,24 @@
+INSERT INTO `tbl_estoc` (`estoc_id`, `estoc_q_max`, `estoc_q_min`, `prod_id`) VALUES
+(1, 10, 3, 1),
+(2, 20, 10, 2),
+(3, 10, 2, 3),
+(4, 15, 3, 4),
+(5, 30, 5, 5),
+(6, 12, 1, 6),
+(7, 0, 0, 8),
+(8, 25, 2, 9),
+(9, 10, 1, 7);
+
+
+-- --------------------------
+
+INSERT INTO `tbl_producte` (`prod_id`, `prod_nom`, `prod_foto`, `prod_preu`, `categoria_id`) VALUES
+(1, 'Armario Blanco', 'Armario_Pax_Blanco.JPG', '128.00', 1),
+(2, 'Armario Negro', 'Armario_Pax_Negro.jpg', '196.00', 1),
+(3, 'Armario Rosa', 'Armario_Pax_Rosa.jpg', '340.00', 1),
+(4, 'Armario con 2 cajones', 'Armario_2_cajones_STOCKHOLM.jpg', '349.00', 2),
+(5, 'Mesa de centro', 'Mesa_Centro_STOCKHOLM.jpg', '199.00', 2),
+(6, 'Mueble TV', 'Mueble_TV_STOCKHOLM.jpg', '349.00', 3),
+(7, 'Mesa extensible blanco', 'Mesa_extensible_blanco_BJURSTA', '199.00', 2),
+(8, 'Mesa extensible marron', 'Mesa_extensible_marron_BJURSTA', '199.00', 2),
+(9, 'Aparador', 'Aparador_BJURSTA', '199.00', 3);

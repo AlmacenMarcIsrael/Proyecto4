@@ -255,13 +255,13 @@ public class VistaCompleta extends javax.swing.JFrame {
         double precio = Double.parseDouble(this.txt_precio.getText());
         String stock = this.txt_stock.getText();
 
-        Producto p = new Producto(nombre, precio, stock);
+        //Producto p = new Producto(nombre, precio, stock);
 
         
         
         Cliente c = new Cliente(this.tnif.getText(),this.tnombre.getText());
 
-        factura.anadirProductoCliente(p, c);
+        //factura.anadirProductoCliente(p, c);
     }//GEN-LAST:event_btn_anadirtodoActionPerformed
 
     /**

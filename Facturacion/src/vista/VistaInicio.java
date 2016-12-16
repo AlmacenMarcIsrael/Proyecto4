@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.ControllerFactura;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -35,9 +36,9 @@ public class VistaInicio extends javax.swing.JFrame {
     private void initComponents() {
 
         Escritorio = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
+        menu_login = new javax.swing.JPanel();
         txt_username = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_send = new javax.swing.JButton();
         msg_error = new javax.swing.JLabel();
         pwd_login = new javax.swing.JPasswordField();
         menuBar = new javax.swing.JMenuBar();
@@ -61,8 +62,8 @@ public class VistaInicio extends javax.swing.JFrame {
         Escritorio.setBackground(new java.awt.Color(204, 255, 51));
         Escritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setAlignmentX(100);
+        menu_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        menu_login.setAlignmentX(100);
 
         txt_username.setText("Usuario");
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -78,11 +79,17 @@ public class VistaInicio extends javax.swing.JFrame {
                 txt_usernameActionPerformed(evt);
             }
         });
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyPressed(evt);
+            }
+        });
 
-        jButton1.setText("Acceder");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_send.setMnemonic('a');
+        btn_send.setText("Acceder");
+        btn_send.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_sendActionPerformed(evt);
             }
         });
 
@@ -100,27 +107,32 @@ public class VistaInicio extends javax.swing.JFrame {
                 pwd_loginActionPerformed(evt);
             }
         });
+        pwd_login.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pwd_loginKeyPressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout menu_loginLayout = new javax.swing.GroupLayout(menu_login);
+        menu_login.setLayout(menu_loginLayout);
+        menu_loginLayout.setHorizontalGroup(
+            menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_loginLayout.createSequentialGroup()
+                .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_loginLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txt_username, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(msg_error, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pwd_login, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(menu_loginLayout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jButton1)))
+                        .addComponent(btn_send)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        menu_loginLayout.setVerticalGroup(
+            menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_loginLayout.createSequentialGroup()
                 .addContainerGap(160, Short.MAX_VALUE)
                 .addComponent(msg_error, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -128,12 +140,12 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pwd_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_send, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(214, 214, 214))
         );
 
-        Escritorio.add(jPanel1);
-        jPanel1.setBounds(320, 70, 340, 530);
+        Escritorio.add(menu_login);
+        menu_login.setBounds(320, 70, 340, 530);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
@@ -212,17 +224,11 @@ public class VistaInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
 
         pack();
@@ -248,18 +254,16 @@ public class VistaInicio extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btn_productosActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.msg_error.setText("");
+public void login(){
+    this.msg_error.setText("");
         int error_login = 0;
         if (this.txt_username.getText().equals("Usuario")){
             this.msg_error.setText("Introduce un usuario");
             error_login = 1;
-        } else if(this.pwd_login.getPassword().equals("Contraseña")){
+        } else if(this.pwd_login.getText().equals("Contraseña")){
             this.msg_error.setText("Introduce una contraseña");
             error_login = 1;
-        }
+        }else{
         
         //llamar a la funcion de login
     
@@ -294,9 +298,9 @@ public class VistaInicio extends javax.swing.JFrame {
         
         
         if (error_login == 0){
-            this.msg_error.setText("Error de login");
+            this.msg_error.setText("Usuario o contraseña incorrectos");
         }else{
-            this.jPanel1.setVisible(false);
+            this.menu_login.setVisible(false);
             
             VistaProducto vistaproducto = new VistaProducto();
         
@@ -308,9 +312,13 @@ public class VistaInicio extends javax.swing.JFrame {
         this.jMenu1.setVisible(true);
         }
         //this.msg_error.setVisible(true);
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }
+}
+    
+    private void btn_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendActionPerformed
+        // TODO add your handling code here:
+        login();
+    }//GEN-LAST:event_btn_sendActionPerformed
 
     private void txt_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusGained
         // TODO add your handling code here:
@@ -354,6 +362,24 @@ public class VistaInicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_pwd_loginFocusLost
 
+    private void txt_usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyPressed
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER) {
+        //Your Code
+        login();
+        }
+    }//GEN-LAST:event_txt_usernameKeyPressed
+
+    private void pwd_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_loginKeyPressed
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER) {
+        //Your Code
+        login();
+        }
+    }//GEN-LAST:event_pwd_loginKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -389,11 +415,11 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem btn_productos;
+    private javax.swing.JButton btn_send;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
@@ -402,10 +428,9 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPanel menu_login;
     private javax.swing.JLabel msg_error;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JPasswordField pwd_login;

@@ -36,6 +36,10 @@ public class Producto {
         this.prod_preu = prod_preu;
     }
 
+    public Producto(String nombre, double precio, String stock) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getProd_id() {
         return prod_id;
     }

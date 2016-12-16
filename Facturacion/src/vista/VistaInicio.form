@@ -134,7 +134,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Escritorio" alignment="0" pref="1000" max="32767" attributes="0"/>
+          <Component id="Escritorio" alignment="0" pref="1100" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -171,7 +171,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="90" width="340" height="530"/>
+              <AbsoluteConstraints x="390" y="100" width="340" height="530"/>
             </Constraint>
           </Constraints>
 
@@ -274,7 +274,6 @@
                 <Property name="defaultCapable" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="rolloverEnabled" type="boolean" value="false"/>
               </Properties>

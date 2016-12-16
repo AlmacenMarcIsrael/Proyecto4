@@ -126,7 +126,6 @@ public class VistaInicio extends javax.swing.JFrame {
         jButton1.setDefaultCapable(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
-        jButton1.setOpaque(false);
         jButton1.setRequestFocusEnabled(false);
         jButton1.setRolloverEnabled(false);
 
@@ -168,7 +167,7 @@ public class VistaInicio extends javax.swing.JFrame {
         );
 
         Escritorio.add(menu_login);
-        menu_login.setBounds(320, 90, 340, 530);
+        menu_login.setBounds(390, 100, 340, 530);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
@@ -247,7 +246,7 @@ public class VistaInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

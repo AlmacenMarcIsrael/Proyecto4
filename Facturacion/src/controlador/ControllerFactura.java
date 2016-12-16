@@ -88,23 +88,31 @@ public class ControllerFactura {
 
     }
 
-    public DefaultTableModel mostrarProducto() {
+     public DefaultTableModel mostrarProducto() {
 
         DefaultTableModel tabla = null;
 
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();
 
-        String sql = "SELECT * FROM tbl_producte";
+        //SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min 
+        //FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id 
+        //INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id 
+        //WHERE tbl_producte.prod_nom LIKE '%Blanc%' OR tbl_categoria.categoria_nom LIKE '%Dorm%' 
+        String sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id ";
+       
 
         Statement st = null;
         //Creamos un veector string para almacenar los datos que obtenemos del select y lo meteremos en la tabla
-        String vector[] = new String[3];
-        String vectorCabecera[] = new String[3];
+        String vector[] = new String[6];
+        String vectorCabecera[] = new String[6];
 
-        vectorCabecera[0] = "prod_id";
-        vectorCabecera[1] = "prod_nom";
-        vectorCabecera[2] = "prod_preu";
+        vectorCabecera[0] = "ID Producto";
+        vectorCabecera[1] = "Nombre Producto";
+        vectorCabecera[2] = "Precio Producto";
+        vectorCabecera[3] = "Categoria";
+        vectorCabecera[4] = "Stock Máximo";
+        vectorCabecera[5] = "Stock Mínimo";
        
 
         tabla =  new DefaultTableModel(null, vectorCabecera);
@@ -121,9 +129,9 @@ public class ControllerFactura {
                 vector[0] = String.valueOf(rs.getInt("prod_id"));
                 vector[1] = rs.getString("prod_nom");
                 vector[2] = String.valueOf(rs.getDouble("prod_preu"));
-               
-
-               
+                vector[3] = rs.getString("categoria_nom");
+                vector[4] = String.valueOf(rs.getInt("estoc_q_max"));
+                vector[5] = String.valueOf(rs.getInt("estoc_q_min"));
                  tabla.addRow(vector);
             }
             
@@ -133,7 +141,7 @@ public class ControllerFactura {
 
         return tabla;
     }
-
+     
     public void anadirProductoCliente(Producto p, Cliente c) {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();

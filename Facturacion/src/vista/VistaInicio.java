@@ -18,12 +18,13 @@ public class VistaInicio extends javax.swing.JFrame {
      * Creates new form vistaInicio
      */
     public VistaInicio() {
+        setResizable(false);
         initComponents();
-        this.setTitle("Apliacion Almacen");
+        this.setTitle("Gestion Almacén Marc Israel");
         this.pwd_login.setEchoChar((char)0);
         
         //this.setExtendedState(VistaInicio.MAXIMIZED_BOTH);
-        this.jMenu1.setVisible(false);
+        this.menuBar.setVisible(false);
     }
 
     /**
@@ -56,12 +57,13 @@ public class VistaInicio extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Escritorio.setBackground(new java.awt.Color(204, 255, 51));
         Escritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Escritorio.setMaximumSize(new java.awt.Dimension(1100, 750));
+        Escritorio.setMinimumSize(new java.awt.Dimension(1100, 750));
 
         menu_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menu_login.setAlignmentX(100);
@@ -237,9 +239,6 @@ public class VistaInicio extends javax.swing.JFrame {
 
         menuBar.add(helpMenu);
 
-        jMenu1.setText("jMenu1");
-        menuBar.add(jMenu1);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,7 +330,7 @@ public void login(){
         vistaproducto.toFront();
 
         vistaproducto.setVisible(true);
-        this.jMenu1.setVisible(true);
+        this.menuBar.setVisible(true);
         }
         //this.msg_error.setVisible(true);
         }
@@ -431,10 +430,8 @@ public void login(){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaInicio().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new VistaInicio().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -451,7 +448,6 @@ public void login(){
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel menu_login;
     private javax.swing.JLabel msg_error;

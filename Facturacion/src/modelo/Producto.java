@@ -10,7 +10,7 @@ package modelo;
  * @author Usuario
  */
 public class Producto {
-    //private int prod_id;
+    private int prod_id;
     private String prod_nom;
     private double prod_preu;
     private int categoria_id;
@@ -19,7 +19,22 @@ public class Producto {
     public Producto() {
     }
 
+    public int getProd_id() {
+        return prod_id;
+    }
+
+    public void setProd_id(int prod_id) {
+        this.prod_id = prod_id;
+    }
+
     public Producto(String prod_nom, double prod_preu, int categoria_id) {
+        this.prod_nom = prod_nom;
+        this.prod_preu = prod_preu;
+        this.categoria_id = categoria_id;
+    }
+
+    public Producto(int prod_id, String prod_nom, double prod_preu, int categoria_id) {
+        this.prod_id = prod_id;
         this.prod_nom = prod_nom;
         this.prod_preu = prod_preu;
         this.categoria_id = categoria_id;

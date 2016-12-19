@@ -32,6 +32,39 @@ public class ControllerFactura {
     public ControllerFactura() {
     }
 
+    public void eliminar(int id){
+        
+        Conexion conecControl = new Conexion();
+        Connection cn = conecControl.conectar();
+        
+          String sql = "DELETE FROM tbl_producte WHERE prod_id = ?";
+        PreparedStatement pst = null;
+        try {
+            //se podran instertar cosas
+            pst = cn.prepareStatement(sql);
+            //montar tabla para insertar en la BBDD
+            pst.setInt(1, id);
+           
+           
+            //ejecutar la consulta del pst prepared statement
+            //el executeUpdate devuelve un int, si funciona devuelve 1, si no, 0
+            int n = pst.executeUpdate();
+            if (n != 0) {
+                JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente el registro ");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha podido eliminar el registro.");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "UPPS! no se ha podido conectar a la base de datos");
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
+            }
+        }
+    }
     
     public void llenarCombo(JComboBox box){
         DefaultComboBoxModel value;
@@ -96,6 +129,12 @@ public class ControllerFactura {
             //si falla sgnifica que no hay coincidencias
             
             ok = 0;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
+            }
         }
          
         if (ok == 1){
@@ -119,7 +158,7 @@ public class ControllerFactura {
         //FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id 
         //INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id 
         //WHERE tbl_producte.prod_nom LIKE '%Blanc%' OR tbl_categoria.categoria_nom LIKE '%Dorm%' 
-        String sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id ";
+        String sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id ORDER BY `prod_id` ASC";
        
 
         Statement st = null;
@@ -157,6 +196,12 @@ public class ControllerFactura {
             
         } catch (SQLException ex) {
 
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
+            }
         }
 
         return tabla;
@@ -189,9 +234,12 @@ public class ControllerFactura {
            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "no se ha realizado correctamente la consulta");
-            
-           
-
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
+            }
         }
 
         
@@ -228,7 +276,7 @@ public class ControllerFactura {
 
             pst2 = cn.prepareStatement(sql2);
            
-            JOptionPane.showMessageDialog(null, "viento en popa");
+          
             //recuperamos el ultimo registro
             st = cn.createStatement(); 
             rs = st.executeQuery(sql2);
@@ -253,19 +301,87 @@ public class ControllerFactura {
             //pst1.close();
             //pst2.close();
             //rs.close();
-
+              JOptionPane.showMessageDialog(null, "Se ha agregado correctamente el producto al stock");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "UPPS! no se ha podido ejecutar la consulta");
+            JOptionPane.showMessageDialog(null, "no se ha creado el elemento");
             try {
                 //si no se ha ejecutado algun de los dos sql, este comando deshace la unica sentencia sql
                 cn.rollback();
             } catch (SQLException ex1) {
                 Logger.getLogger(ControllerFactura.class.getName()).log(Level.SEVERE, null, ex1);
             }
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
+            }
         }
 
     }
 
+    public void modificar(Producto p, Stock s){
+    
+        Conexion conecControl = new Conexion();
+        Connection cn = conecControl.conectar();
+        //crear la consulta, los ? smulan  las variables
+        String sql1 = "UPDATE tbl_producte SET prod_nom = ?, prod_preu = ?, categoria_id = ? WHERE prod_id = ?";
+        
+        String sql2 = "UPDATE tbl_estoc SET estoc_q_max = ?, estoc_q_min = ? WHERE prod_id = ?";
+        
+        
+        
+        PreparedStatement pst1 = null;
+        Statement st=null;
+        PreparedStatement pst2 = null;
+        ResultSet rs=null;
+
+        try {
+            //cuando esta en false ejecuta los 2 o mas sql como si fuera una sola sentencia
+            cn.setAutoCommit(false);
+            //se podran instertar cosas
+            pst1 = cn.prepareStatement(sql1);
+
+            pst1.setString(1, p.getProd_nom());
+            pst1.setDouble(2, p.getProd_preu());
+            pst1.setInt(3, p.getCategoria_id());            
+            pst1.setInt(4, p.getProd_id());
+            pst1.executeUpdate();
+           
+
+            pst2 = cn.prepareStatement(sql2);
+            pst2.setInt(1, s.getEstoc_max());
+            pst2.setInt(2, s.getEstoc_min());    
+            pst2.setInt(3, p.getProd_id() );
+           
+            //pst1.executeUpdate();       
+            pst2.executeUpdate();
+  
+            cn.commit();
+           //cn.close();
+            //pst1.close();
+            //pst2.close();
+            //rs.close();
+              JOptionPane.showMessageDialog(null, "Se ha modificado correctamente el producto ");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "no se ha modificado el elemento");
+            try {
+                //si no se ha ejecutado algun de los dos sql, este comando deshace la unica sentencia sql
+                cn.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(ControllerFactura.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexi�n");
+            }
+        }
+        
+        
+    }
+    
     public void anadirProducto(Producto p) {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();

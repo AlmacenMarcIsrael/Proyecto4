@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/G:/DAW2/proyecto4/Proyecto4/Facturacion/src/controlador/ControllerFactura.java</file>
+            <file>file:/G:/DAW2/proyecto4/Proyecto4/Facturacion/src/modelo/Producto.java</file>
+            <file>file:/G:/DAW2/proyecto4/Proyecto4/Facturacion/src/vista/VistaProducto.java</file>
+        </group>
     </open-files>
 </project-private>

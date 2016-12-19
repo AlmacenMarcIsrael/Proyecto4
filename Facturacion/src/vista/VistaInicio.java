@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.ControllerFactura;
-import java.awt.event.KeyEvent;
 
 /**
  *
@@ -37,9 +36,9 @@ public class VistaInicio extends javax.swing.JFrame {
     private void initComponents() {
 
         Escritorio = new javax.swing.JDesktopPane();
-        menu_login = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         txt_username = new javax.swing.JTextField();
-        btn_send = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         msg_error = new javax.swing.JLabel();
         pwd_login = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
@@ -65,8 +64,8 @@ public class VistaInicio extends javax.swing.JFrame {
         Escritorio.setMaximumSize(new java.awt.Dimension(1100, 750));
         Escritorio.setMinimumSize(new java.awt.Dimension(1100, 750));
 
-        menu_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        menu_login.setAlignmentX(100);
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setAlignmentX(100);
 
         txt_username.setText("Usuario");
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -82,20 +81,20 @@ public class VistaInicio extends javax.swing.JFrame {
                 txt_usernameActionPerformed(evt);
             }
         });
-        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_usernameKeyPressed(evt);
-            }
-        });
 
+<<<<<<< HEAD
         btn_send.setBackground(new java.awt.Color(153, 153, 153));
         btn_send.setMnemonic('a');
         btn_send.setText("Acceder");
         btn_send.setToolTipText("");
         btn_send.setBorderPainted(false);
         btn_send.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton1.setText("Acceder");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> parent of e4f3579... LogIn Enter Button
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_sendActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -115,12 +114,8 @@ public class VistaInicio extends javax.swing.JFrame {
                 pwd_loginActionPerformed(evt);
             }
         });
-        pwd_login.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                pwd_loginKeyPressed(evt);
-            }
-        });
 
+<<<<<<< HEAD
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/image/user (Custom).png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
@@ -157,11 +152,35 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addGap(20, 20, 20)
+=======
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_username, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(msg_error, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pwd_login, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jButton1)))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(160, Short.MAX_VALUE)
+>>>>>>> parent of e4f3579... LogIn Enter Button
                 .addComponent(msg_error, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pwd_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGap(33, 33, 33)
                 .addComponent(btn_send, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(134, 134, 134))
@@ -169,6 +188,15 @@ public class VistaInicio extends javax.swing.JFrame {
 
         Escritorio.add(menu_login);
         menu_login.setBounds(390, 100, 340, 530);
+=======
+                .addGap(25, 25, 25)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(214, 214, 214))
+        );
+
+        Escritorio.add(jPanel1);
+        jPanel1.setBounds(320, 70, 340, 530);
+>>>>>>> parent of e4f3579... LogIn Enter Button
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
@@ -244,11 +272,21 @@ public class VistaInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
+=======
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+                .addContainerGap())
+>>>>>>> parent of e4f3579... LogIn Enter Button
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -274,16 +312,18 @@ public class VistaInicio extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btn_productosActionPerformed
-public void login(){
-    this.msg_error.setText("");
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.msg_error.setText("");
         int error_login = 0;
         if (this.txt_username.getText().equals("Usuario")){
             this.msg_error.setText("Introduce un usuario");
             error_login = 1;
-        } else if(this.pwd_login.getText().equals("Contraseña")){
+        } else if(this.pwd_login.getPassword().equals("Contraseña")){
             this.msg_error.setText("Introduce una contraseña");
             error_login = 1;
-        }else{
+        }
         
         //llamar a la funcion de login
     
@@ -318,9 +358,9 @@ public void login(){
         
         
         if (error_login == 0){
-            this.msg_error.setText("Usuario o contraseña incorrectos");
+            this.msg_error.setText("Error de login");
         }else{
-            this.menu_login.setVisible(false);
+            this.jPanel1.setVisible(false);
             
             VistaProducto vistaproducto = new VistaProducto();
         
@@ -332,13 +372,9 @@ public void login(){
         this.menuBar.setVisible(true);
         }
         //this.msg_error.setVisible(true);
-        }
-}
-    
-    private void btn_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendActionPerformed
-        // TODO add your handling code here:
-        login();
-    }//GEN-LAST:event_btn_sendActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusGained
         // TODO add your handling code here:
@@ -382,24 +418,6 @@ public void login(){
         
     }//GEN-LAST:event_pwd_loginFocusLost
 
-    private void txt_usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyPressed
-        // TODO add your handling code here:
-        int key = evt.getKeyCode();
-        if (key == KeyEvent.VK_ENTER) {
-        //Your Code
-        login();
-        }
-    }//GEN-LAST:event_txt_usernameKeyPressed
-
-    private void pwd_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_loginKeyPressed
-        // TODO add your handling code here:
-        int key = evt.getKeyCode();
-        if (key == KeyEvent.VK_ENTER) {
-        //Your Code
-        login();
-        }
-    }//GEN-LAST:event_pwd_loginKeyPressed
-
     /**
      * @param args the command line arguments
      */
@@ -433,11 +451,11 @@ public void login(){
             new VistaInicio().setVisible(true);
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem btn_productos;
-    private javax.swing.JButton btn_send;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
@@ -447,8 +465,12 @@ public void login(){
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
+<<<<<<< HEAD
+=======
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel jPanel1;
+>>>>>>> parent of e4f3579... LogIn Enter Button
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JPanel menu_login;
     private javax.swing.JLabel msg_error;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JPasswordField pwd_login;

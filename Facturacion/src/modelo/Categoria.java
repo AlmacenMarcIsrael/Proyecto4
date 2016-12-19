@@ -17,6 +17,10 @@ public class Categoria {
     public Categoria() {
     }
 
+    public Categoria(String categoria_nom) {
+        this.categoria_nom = categoria_nom;
+    }
+
     public Categoria(int categoria_id, String categoria_nom) {
         this.categoria_id = categoria_id;
         this.categoria_nom = categoria_nom;

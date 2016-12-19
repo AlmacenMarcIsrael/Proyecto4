@@ -6,8 +6,10 @@
 package vista;
 
 import controlador.ControllerFactura;
+import modelo.Categoria;
 import modelo.Conexion;
 import modelo.Producto;
+import modelo.Stock;
 
 /**
  *
@@ -44,7 +46,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         txt_id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbl_id = new javax.swing.JLabel();
         btn_anadir = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
@@ -55,6 +57,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         txt_stock_min = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         txt_categoria = new javax.swing.JTextField();
+        btn_nuevo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -81,7 +84,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Precio");
 
-        jLabel3.setText("ID");
+        lbl_id.setText("ID");
 
         btn_anadir.setText("Añadir");
         btn_anadir.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +110,13 @@ public class VistaProducto extends javax.swing.JInternalFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btn_nuevo.setText("Nuevo");
+        btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,12 +124,6 @@ public class VistaProducto extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_anadir)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_guardar))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,21 +136,31 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(14, 14, 14)
-                                    .addComponent(jLabel3)))
+                                    .addComponent(lbl_id)))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txt_categoria, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txt_precio)
-                                    .addComponent(jComboBox1, 0, 116, Short.MAX_VALUE)
-                                    .addComponent(txt_nombreproducto)
-                                    .addComponent(txt_id))))))
+                                .addComponent(txt_precio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 116, Short.MAX_VALUE)
+                                .addComponent(txt_nombreproducto, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txt_id, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_anadir)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_nuevo)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_eliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_guardar)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(btn_nuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_anadir)
                     .addComponent(btn_eliminar)
@@ -154,7 +168,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lbl_id))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_nombreproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,7 +191,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 153));
@@ -264,11 +278,21 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         
         String nombre = this.txt_nombreproducto.getText();
         double precio = Double.parseDouble(this.txt_precio.getText());
+         String nombre_categoria = (String) this.jComboBox1.getSelectedItem().toString();
+         
+        System.out.println(nombre_categoria);
+        int stock_max =  Integer.parseInt(this.txt_stock_max.getText());
+        int stock_min = Integer.parseInt(this.txt_stock_min.getText());
         
+        //con el nombre podemos hacer una consulta sql para obtener el id categoria
+   
+        int categoria_id = producto.buscar_categoria_id(nombre_categoria);
+   
+        Producto p = new Producto(nombre, precio, categoria_id);
+
+        Stock s = new Stock(stock_max, stock_min);
         
-        Producto p = new Producto(nombre, precio);
-        
-        producto.anadirProducto(p);
+        producto.anadirProductoStock(p,s);
     }//GEN-LAST:event_btn_anadirActionPerformed
 
     private void txt_precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precioActionPerformed
@@ -283,17 +307,46 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
          //Modificamos el boton guardar para que pase a modificar
         this.btn_guardar.setText("Modificar");
+        
+        
         //Marcar la fila selecionado al presionar click
         int fila = jTable1.rowAtPoint(evt.getPoint());
         //Pasa el parametro
+        this.txt_id.setVisible(true);
+        this.lbl_id.setVisible(true);
+        this.btn_anadir.setEnabled(false);
+        this.txt_id.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
         this.txt_nombreproducto.setText(String.valueOf(jTable1.getValueAt(fila, 1)));
         this.txt_precio.setText(String.valueOf(jTable1.getValueAt(fila, 2)));
         this.jComboBox1.setVisible(false);
         this.txt_categoria.setVisible(true);
         this.txt_categoria.setText(String.valueOf(jTable1.getValueAt(fila, 3)));
+        this.txt_stock_max.setText(String.valueOf(jTable1.getValueAt(fila, 4)));
+        this.txt_stock_min.setText(String.valueOf(jTable1.getValueAt(fila, 5)));
+        
         
         //Desahibilitar los botones de añadir y eliminar
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
+        // TODO add your handling code here:
+        
+        this.btn_eliminar.setEnabled(false);
+        this.btn_anadir.setEnabled(true);
+        this.txt_id.setVisible(false);
+        this.lbl_id.setVisible(false);
+        
+        this.txt_id.setText("");
+        this.txt_nombreproducto.setText("");
+        this.txt_precio.setText("");
+        this.txt_stock_max.setText("");
+        this.txt_stock_min.setText("");
+        
+        this.jComboBox1.setVisible(true);
+        
+        this.txt_categoria.setVisible(false);
+        this.btn_guardar.setText("Guardar");
+    }//GEN-LAST:event_btn_nuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,11 +390,11 @@ public class VistaProducto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_conectar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_nuevo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -349,6 +402,7 @@ public class VistaProducto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_id;
     private javax.swing.JTextField txt_categoria;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombreproducto;

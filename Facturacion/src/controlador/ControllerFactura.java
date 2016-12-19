@@ -21,6 +21,7 @@ import modelo.Categoria;
 
 import modelo.Conexion;
 import modelo.Producto;
+import modelo.Stock;
 
 /**
  *
@@ -161,36 +162,98 @@ public class ControllerFactura {
         return tabla;
     }
      
-    /*public void anadirProductoCliente(Producto p, Cliente c) {
+     
+    public int buscar_categoria_id(String c){
+        
+        Conexion conecControl = new Conexion();
+        Connection cn = conecControl.conectar();
+        int categoria_id = 0 ;
+        
+         String sql = "Select categoria_id From tbl_categoria where categoria_nom = '"+c+"'";
+        
+        Statement st = null;
+        ResultSet rs=null;
+        
+       try {
+            //System.out.println("conexion realizada");
+            st = cn.prepareCall(sql);
+
+          
+             rs = st.executeQuery(sql);
+
+            if(rs.next()) {
+                //si entra aqui significa que hay coincidencias
+                
+               categoria_id = rs.getInt("categoria_id");
+            }
+           
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "no se ha realizado correctamente la consulta");
+            
+           
+
+        }
+
+        
+        return categoria_id;
+    } 
+     
+    public void anadirProductoStock(Producto p, Stock s) {
         Conexion conecControl = new Conexion();
         Connection cn = conecControl.conectar();
         //crear la consulta, los ? smulan  las variables
-        String sql1 = "INSERT INTO tbl_producto (prod_nom, prod_preu) VALUES (?,?)";
-        String sql2 = "INSER INTO tbl_cliente (cli_NIF, cli_nom) VALUES (?,?)";
-        //pasar parametros a la consulta
+        
+        String sql1 = "INSERT INTO tbl_producte (Prod_nom, Prod_preu, categoria_id) VALUES (?,?,?)";
+      
+         String sql2= "select distinct last_insert_id() from  tbl_producte";
+         
+         String sql3 = "INSERT INTO tbl_estoc (estoc_q_max, estoc_q_min, prod_id) VALUES (?,?,?)";
+         
         PreparedStatement pst1 = null;
+        Statement st=null;
         PreparedStatement pst2 = null;
+        ResultSet rs=null;
 
         try {
-            //cuando esta en false ejecuta los 2 sql como si fuera una sola sentencia
+            //cuando esta en false ejecuta los 2 o mas sql como si fuera una sola sentencia
             cn.setAutoCommit(false);
             //se podran instertar cosas
-            pst1 = cn.prepareStatement(sql1);
-            //montar tabla para insertar en la BBDD
+                pst1 = cn.prepareStatement(sql1);
+
             pst1.setString(1, p.getProd_nom());
             pst1.setDouble(2, p.getProd_preu());
+            pst1.setInt(3, p.getCategoria_id());
+            pst1.executeUpdate();
            
 
             pst2 = cn.prepareStatement(sql2);
-            //montar tabla para insertar en la BBDD
-            pst2.setString(1, c.getCli_NIF());
-            pst2.setString(2, c.getCli_nom());
+           
+            JOptionPane.showMessageDialog(null, "viento en popa");
+            //recuperamos el ultimo registro
+            st = cn.createStatement(); 
+            rs = st.executeQuery(sql2);
+            int idst=0;
+            while(rs.next()){
+            idst=rs.getInt(1);
+            }
+            
+              pst2 = cn.prepareStatement(sql3);
 
-            int n2 = pst2.executeUpdate();
-
-            int n1 = pst1.executeUpdate();
-
+           
+            
+            pst2.setInt(1,s.getEstoc_max());
+            pst2.setInt(2, s.getEstoc_min());    
+            pst2.setInt(3,idst );
+           
+            //pst1.executeUpdate();       
+            pst2.executeUpdate();
+  
             cn.commit();
+           // cn.close();
+            //pst1.close();
+            //pst2.close();
+            //rs.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UPPS! no se ha podido ejecutar la consulta");
             try {
@@ -201,7 +264,7 @@ public class ControllerFactura {
             }
         }
 
-    }*/
+    }
 
     public void anadirProducto(Producto p) {
         Conexion conecControl = new Conexion();

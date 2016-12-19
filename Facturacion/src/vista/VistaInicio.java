@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.ControllerFactura;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -27,6 +26,11 @@ public class VistaInicio extends javax.swing.JFrame {
         //this.setExtendedState(VistaInicio.MAXIMIZED_BOTH);
         this.menuBar.setVisible(false);
     }
+    
+    
+    
+ 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +57,6 @@ public class VistaInicio extends javax.swing.JFrame {
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -223,10 +226,6 @@ public class VistaInicio extends javax.swing.JFrame {
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
-
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
@@ -436,10 +435,8 @@ public void login(){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaInicio().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new VistaInicio().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -447,7 +444,6 @@ public void login(){
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem btn_productos;
     private javax.swing.JButton btn_send;
-    private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
@@ -463,9 +459,4 @@ public void login(){
     private javax.swing.JPasswordField pwd_login;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
-
-    private void setIcon() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

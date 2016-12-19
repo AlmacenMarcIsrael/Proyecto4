@@ -130,13 +130,19 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Component id="Escritorio" alignment="0" pref="1100" max="32767" attributes="0"/>
 =======
+=======
+>>>>>>> parent of e4f3579... LogIn Enter Button
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Escritorio" pref="980" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+<<<<<<< HEAD
+>>>>>>> parent of e4f3579... LogIn Enter Button
+=======
 >>>>>>> parent of e4f3579... LogIn Enter Button
       </Group>
     </DimensionLayout>
@@ -219,6 +225,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+>>>>>>> parent of e4f3579... LogIn Enter Button
+=======
 >>>>>>> parent of e4f3579... LogIn Enter Button
                           </Group>
                       </Group>
@@ -264,10 +273,13 @@
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="97"/>
+=======
+>>>>>>> parent of e4f3579... LogIn Enter Button
 =======
 >>>>>>> parent of e4f3579... LogIn Enter Button
                 <Property name="text" type="java.lang.String" value="Acceder"/>

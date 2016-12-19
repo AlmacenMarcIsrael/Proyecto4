@@ -83,12 +83,17 @@ public class VistaInicio extends javax.swing.JFrame {
         });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         btn_send.setBackground(new java.awt.Color(153, 153, 153));
         btn_send.setMnemonic('a');
         btn_send.setText("Acceder");
         btn_send.setToolTipText("");
         btn_send.setBorderPainted(false);
         btn_send.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton1.setText("Acceder");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> parent of e4f3579... LogIn Enter Button
 =======
         jButton1.setText("Acceder");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +119,7 @@ public class VistaInicio extends javax.swing.JFrame {
                 pwd_loginActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/image/user (Custom).png"))); // NOI18N
@@ -153,6 +159,9 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addGap(20, 20, 20)
 =======
+=======
+
+>>>>>>> parent of e4f3579... LogIn Enter Button
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -196,6 +205,9 @@ public class VistaInicio extends javax.swing.JFrame {
 
         Escritorio.add(jPanel1);
         jPanel1.setBounds(320, 70, 340, 530);
+<<<<<<< HEAD
+>>>>>>> parent of e4f3579... LogIn Enter Button
+=======
 >>>>>>> parent of e4f3579... LogIn Enter Button
 
         fileMenu.setMnemonic('f');
@@ -273,12 +285,18 @@ public class VistaInicio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 <<<<<<< HEAD
+<<<<<<< HEAD
             .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
 =======
+=======
+>>>>>>> parent of e4f3579... LogIn Enter Button
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
                 .addContainerGap())
+<<<<<<< HEAD
+>>>>>>> parent of e4f3579... LogIn Enter Button
+=======
 >>>>>>> parent of e4f3579... LogIn Enter Button
         );
         layout.setVerticalGroup(
@@ -466,6 +484,11 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel jPanel1;
+>>>>>>> parent of e4f3579... LogIn Enter Button
 =======
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;

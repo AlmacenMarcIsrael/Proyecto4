@@ -6,14 +6,16 @@
 package vista;
 
 import controlador.ControllerFactura;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Marc e Israel
  */
 public class VistaInicio extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form vistaInicio
      */
@@ -25,7 +27,6 @@ public class VistaInicio extends javax.swing.JFrame {
         //this.setExtendedState(VistaInicio.MAXIMIZED_BOTH);
         this.menuBar.setVisible(false);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,8 +46,6 @@ public class VistaInicio extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         btn_productos = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
@@ -59,7 +58,6 @@ public class VistaInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(30000, 3000));
         setResizable(false);
 
         Escritorio.setBackground(new java.awt.Color(204, 255, 51));
@@ -121,7 +119,7 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/image/user (Custom).png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/image/user_icon.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -191,16 +189,6 @@ public class VistaInicio extends javax.swing.JFrame {
         });
         fileMenu.add(btn_productos);
 
-        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Clientes");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Completa");
-        fileMenu.add(saveAsMenuItem);
-
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -242,6 +230,11 @@ public class VistaInicio extends javax.swing.JFrame {
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -261,24 +254,6 @@ public class VistaInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    private void btn_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_productosActionPerformed
-        // TODO add your handling code here:
-
-        VistaProducto vistaproducto = new VistaProducto();
-        
-        this.Escritorio.add(vistaproducto);
-
-        vistaproducto.toFront();
-
-        vistaproducto.setVisible(true);
-        
-        
-    }//GEN-LAST:event_btn_productosActionPerformed
 public void login(){
     this.msg_error.setText("");
         int error_login = 0;
@@ -405,6 +380,33 @@ public void login(){
         }
     }//GEN-LAST:event_pwd_loginKeyPressed
 
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void btn_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_productosActionPerformed
+        // TODO add your handling code here:
+
+        VistaProducto vistaproducto = new VistaProducto();
+
+        this.Escritorio.add(vistaproducto);
+
+        vistaproducto.toFront();
+
+        vistaproducto.setVisible(true);
+    }//GEN-LAST:event_btn_productosActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        // TODO add your handling code here:
+        String nl = System.getProperty("line.separator");
+  //Lanzamos el mensaje:
+    JOptionPane.showMessageDialog(null, "Programa de gestión de almacenes"
+    + nl + ""
+    + nl + "Marc Petit e Israel Perea");
+        
+        
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -459,9 +461,11 @@ public void login(){
     private javax.swing.JLabel msg_error;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JPasswordField pwd_login;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

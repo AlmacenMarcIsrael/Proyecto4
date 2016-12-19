@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author 1001489.joan23
+ * @author Marc e Israel
  */
 public class VistaInicio extends javax.swing.JFrame {
 
@@ -19,11 +19,11 @@ public class VistaInicio extends javax.swing.JFrame {
      */
     public VistaInicio() {
         initComponents();
-        this.setTitle("Apliacion Almacen");
+        this.setTitle("Almacén Marc/Israel");
         this.pwd_login.setEchoChar((char)0);
         
         //this.setExtendedState(VistaInicio.MAXIMIZED_BOTH);
-        this.jMenu1.setVisible(false);
+        this.menuBar.setVisible(false);
     }
 
     /**
@@ -56,9 +56,11 @@ public class VistaInicio extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setMaximumSize(new java.awt.Dimension(30000, 3000));
+        setResizable(false);
 
         Escritorio.setBackground(new java.awt.Color(204, 255, 51));
         Escritorio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -134,21 +136,26 @@ public class VistaInicio extends javax.swing.JFrame {
         menu_loginLayout.setHorizontalGroup(
             menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_loginLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pwd_login, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_loginLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(53, 53, 53))
                     .addGroup(menu_loginLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(50, 50, 50)
                         .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(msg_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(53, 53, 53)))
+                            .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pwd_login, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(49, 49, 49))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_loginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_send, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_loginLayout.createSequentialGroup()
+                        .addComponent(btn_send, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_loginLayout.createSequentialGroup()
+                        .addComponent(msg_error, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72))))
         );
         menu_loginLayout.setVerticalGroup(
             menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +174,9 @@ public class VistaInicio extends javax.swing.JFrame {
         );
 
         Escritorio.add(menu_login);
-        menu_login.setBounds(390, 100, 340, 530);
+        menu_login.setBounds(350, 90, 340, 530);
+
+        menuBar.setEnabled(false);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
@@ -237,20 +246,17 @@ public class VistaInicio extends javax.swing.JFrame {
 
         menuBar.add(helpMenu);
 
-        jMenu1.setText("jMenu1");
-        menuBar.add(jMenu1);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
         pack();
@@ -272,9 +278,6 @@ public class VistaInicio extends javax.swing.JFrame {
         vistaproducto.setVisible(true);
         
         
-        
-        
-
     }//GEN-LAST:event_btn_productosActionPerformed
 public void login(){
     this.msg_error.setText("");
@@ -330,8 +333,8 @@ public void login(){
 
         vistaproducto.toFront();
 
-        vistaproducto.setVisible(true);
-        this.jMenu1.setVisible(true);
+        vistaproducto.setVisible(true);     
+        this.menuBar.setVisible(true);
         }
         //this.msg_error.setVisible(true);
         }
@@ -451,7 +454,6 @@ public void login(){
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel menu_login;
     private javax.swing.JLabel msg_error;

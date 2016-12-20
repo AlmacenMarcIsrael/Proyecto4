@@ -46,18 +46,13 @@ public class VistaInicio extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         btn_productos = new javax.swing.JMenuItem();
+        btn_logout = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(1050, 721));
         setResizable(false);
 
         Escritorio.setBackground(new java.awt.Color(204, 255, 51));
@@ -133,22 +128,21 @@ public class VistaInicio extends javax.swing.JFrame {
         menu_login.setLayout(menu_loginLayout);
         menu_loginLayout.setHorizontalGroup(
             menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menu_loginLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pwd_login, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(menu_loginLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(msg_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(53, 53, 53)))
-                .addGap(49, 49, 49))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_loginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_send, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
+            .addGroup(menu_loginLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msg_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_username)
+                    .addComponent(pwd_login)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_loginLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(53, 53, 53)))
+                .addGap(49, 49, 49))
         );
         menu_loginLayout.setVerticalGroup(
             menu_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,6 +176,14 @@ public class VistaInicio extends javax.swing.JFrame {
         });
         fileMenu.add(btn_productos);
 
+        btn_logout.setText("Log Out");
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        fileMenu.add(btn_logout);
+
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -192,27 +194,6 @@ public class VistaInicio extends javax.swing.JFrame {
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
-
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
-
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
-        menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
@@ -402,6 +383,18 @@ public void login(){
         
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        // TODO add your handling code here:
+        this.menu_login.setVisible(true);
+            
+            VistaProducto vistaproducto = new VistaProducto();
+        
+        
+
+        vistaproducto.setVisible(false);
+        this.menuBar.setVisible(false);
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -440,12 +433,9 @@ public void login(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem btn_logout;
     private javax.swing.JMenuItem btn_productos;
     private javax.swing.JButton btn_send;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
@@ -453,7 +443,6 @@ public void login(){
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel menu_login;
     private javax.swing.JLabel msg_error;
-    private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JPasswordField pwd_login;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables

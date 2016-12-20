@@ -44,21 +44,25 @@ public class ControllerFactura {
         //INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id 
         //WHERE tbl_producte.prod_nom LIKE '%Blanc%' OR tbl_categoria.categoria_nom LIKE '%Dorm%' 
         String sql = null;
-        if (y == "prod_nom"){
+        if (y == "Nombre Producto"){
             
-        sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE prod_nom LIKE ? ";
+        sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE prod_nom LIKE '%"+z+"%' ";
 
-        }else if(y == "prod_preu"){
-         sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE prod_preu LIKE ? ";
+        }else if(y == "Precio superior a"){
+         sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE prod_preu >= "+z;
 
-        }else if(y == "categoria_id"){
-           sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE categoria_id LIKE ? ";
+        }else if(y == "Precio inferior a"){
+         sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE prod_preu <= "+z;
+
+        }else if(y == "Nombre Categoria"){
+           sql = "SELECT tbl_producte.prod_id, tbl_producte.prod_nom, tbl_producte.prod_preu, tbl_categoria.categoria_nom, tbl_estoc.estoc_q_max, tbl_estoc.estoc_q_min FROM tbl_producte INNER JOIN tbl_estoc ON tbl_estoc.prod_id = tbl_producte.prod_id INNER JOIN tbl_categoria ON tbl_producte.categoria_id = tbl_categoria.categoria_id WHERE categoria_nom LIKE '%"+z+"%' ";
         }
         
         
         //el primer interrogante será el campo de la tabla quue queremos filtras y el segundo interrogante sera lo que hemos introducido en el buscador
-        PreparedStatement pst = null;
-        
+       
+        //PreparedStatement pst = null;
+        Statement st = null;
  
         
         //Creamos un veector string para almacenar los datos que obtenemos del select y lo meteremos en la tabla
@@ -79,21 +83,23 @@ public class ControllerFactura {
         
         try {
  
-           pst = cn.prepareStatement(sql);
-   
-            if (y == "prod_preu"){
-               
-                Double x = Double.parseDouble(z);
-                pst.setDouble(1, x);
-            }
-            
-            
-            z = "%"+z+"%";
-            pst.setString(1, z);
-         
-            
-            ResultSet rs = pst.executeQuery(sql);
+              st = cn.createStatement();
 
+            ResultSet rs = st.executeQuery(sql);
+           //pst = cn.prepareStatement(sql);
+   
+            //if (y == "prod_preu"){
+               
+              //  Double x = Double.parseDouble(z);
+                //pst.setDouble(1, x);
+            //}
+            
+            
+            //z = "%"+z+"%";
+           // pst.setString(1, z);
+         
+            //ResultSet rs = pst.executeQuery(sql);
+            int cont = 0;
             while (rs.next()) {
 
                 vector[0] = String.valueOf(rs.getInt("prod_id"));
@@ -103,10 +109,14 @@ public class ControllerFactura {
                 vector[4] = String.valueOf(rs.getInt("estoc_q_max"));
                 vector[5] = String.valueOf(rs.getInt("estoc_q_min"));
                  tabla.addRow(vector);
+                 cont ++;
             }
-            
+            if (cont==0){
+               
+           JOptionPane.showMessageDialog(null, "No hay coincidencias de busqueda"); 
+            }
         } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "No hay coincidencias de busqueda"); 
+                        JOptionPane.showMessageDialog(null, "Error, No se ha ejecutado la busqueda, contacte con el administrador"); 
            
         }finally{
             try {
@@ -140,16 +150,17 @@ public class ControllerFactura {
             //ejecutar la consulta del pst prepared statement
             //el executeUpdate devuelve un int, si funciona devuelve 1, si no, 0
             int n = pst.executeUpdate();
+        
             if (n != 0) {
-                JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente el registro del producto ");
+                JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente el registro del producto.");
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha podido eliminar el registro.");
+                JOptionPane.showMessageDialog(null, "No se ha podido eliminar el producto.");
             }
-             int n2 = pst.executeUpdate();
+             int n2 = pst2.executeUpdate();
             if (n2 != 0) {
                 JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente el registro de stock ");
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha podido eliminar el registro.");
+                JOptionPane.showMessageDialog(null, "No se ha podido eliminar el stock.");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "UPPS! no se ha podido conectar a la base de datos");
